@@ -1,4 +1,8 @@
-FROM python:3.6-slim
+FROM ubuntu:18.04
+RUN apt-get update -y
+RUN apt-get install -y python3 python3-pip --no-install-recommends
+RUN apt-get install -y libmagic1
+
 WORKDIR /usr/src/app
 
 COPY . .

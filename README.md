@@ -11,7 +11,11 @@ git clone https://github.com/rpparas/env_comparator.git
 ## Usage
 
 ```
+# For Debian environments to check binary filesize
+apt-get install -y libmagic1
+
 # Recommended: Python3.6 or higher is installed
+pip install -r requirements.txt
 python compare_env_files.py .env1 .env2
 
 # If you have Docker installed:
@@ -22,7 +26,6 @@ make run
 
 ```
 # Make sure you have pytest installed locally or in your virtual env
-pip install requirements.txt
 pytest .
 
 # If you have Docker installed:
