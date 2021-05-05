@@ -1,6 +1,7 @@
 import argparse
 import logging
 
+from setup_logging import define_log_settings
 from file_reader import read_file_contents
 from line_parser import line_matches_pattern, extract_key
 
@@ -12,11 +13,9 @@ def compare_keys_in_files(contents_file1, contents_file2):
     keys_not_in_file2 = find_missing_keys(keys_file1, keys_file2)
 
     if keys_not_in_file2:
-        logging.warning(f"Keys missing in {args.file2}:")
-        logging.warning(keys_not_in_file2)
+        logging.warning(f"Keys missing in {args.file2}: {keys_not_in_file2}")
     else:
         logging.info(f"There are no keys missing in {args.file2}")
-
 
 def extract_unique_keys(contents):
     """
@@ -49,18 +48,21 @@ if __name__ == "__main__":
     parser.add_argument('file1', type=str, help='Path to first file')
     parser.add_argument('file2', type=str, help='Path to second file')
     # TODO: what if there's a third file, is it compared against the first file?
+    # TODO: make max filesize customizable as a parameter
     args = parser.parse_args()
+
+    define_log_settings()
 
     try:
         contents_file1 = read_file_contents(args.file1)
     except FileNotFoundError:
-        logging.error(f"Unable to read {args.file1}. Check path & file permission")
+        logging.error(f"Unable to read {args.file1} file. Check path & file permission")
         exit(1)
 
     try:
         contents_file2 = read_file_contents(args.file2)
     except FileNotFoundError:
-        logging.error(f"Unable to read {args.file2}. Check path & file permission")
+        logging.error(f"Unable to read {args.file2} file. Check path & file permission")
         exit(1)
 
     compare_keys_in_files(contents_file1, contents_file2)
