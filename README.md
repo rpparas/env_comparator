@@ -5,13 +5,17 @@ A simple script to compare two .env files to check keys missing in file2 relativ
 ## Installation
 
 ```
-git clone ...
+git clone https://github.com/rpparas/env_comparator.git
 ```
 
 ## Usage
 
 ```
+# Recommended: Python3.6 or higher is installed
 python compare_env_files.py .env1 .env2
+
+# If you have Docker installed:
+make run
 ```
 
 ## Testing
@@ -20,6 +24,9 @@ python compare_env_files.py .env1 .env2
 # Make sure you have pytest installed locally or in your virtual env
 pip install requirements.txt
 pytest .
+
+# If you have Docker installed:
+make test
 ```
 
 ## Contributing
