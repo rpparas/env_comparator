@@ -22,6 +22,11 @@ python compare_env_files.py .env1 .env2
 make run
 ```
 
+## Additional Work
+1. Create a frontend Web UI that interface with these scripts
+2. Create a Lambda or EC2 instance to serve backend + frontend
+3. Add features to handle mutiple file comparisons
+4. Handle edge cases involving errors
 ## Testing
 
 ```
