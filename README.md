@@ -18,7 +18,8 @@ python compare_env_files.py .env1 .env2
 
 ```
 # Make sure you have pytest installed locally or in your virtual env
-pytest tests
+pip install requirements.txt
+pytest .
 ```
 
 ## Contributing
